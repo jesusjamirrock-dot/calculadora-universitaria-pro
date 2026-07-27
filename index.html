@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Técnico Standard -->
+  <title>Calculadora Universitaria Pro | Calcula Promedio Ponderado, Créditos y Simulador de Notas</title>
+  <meta name="description" content="La herramienta web más completa para estudiantes universitarios. Calcula tu promedio ponderado, simula la nota que necesitas para aprobar, analiza estadísticas y gestiona tu historial académico.">
+  <meta name="keywords" content="calculadora universitaria, promedio ponderado, nota necesaria, simular notas, calculadora de creditos, promedio simple, notas universidad 0-20">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://calculadorauniversitaria.pro/">
+  <meta name="author" content="Calculadora Universitaria Pro">
+  <meta name="theme-color" content="#2563eb">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://calculadorauniversitaria.pro/">
+  <meta property="og:title" content="Calculadora Universitaria Pro | Dashboard Académico">
+  <meta property="og:description" content="Gestiona tus cursos, calcula tu promedio ponderado y simula tus notas finales en segundos. 100% gratuito y seguro.">
+  <meta property="og:image" content="https://calculadorauniversitaria.pro/assets/og-image.jpg">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://calculadorauniversitaria.pro/">
+  <meta name="twitter:title" content="Calculadora Universitaria Pro | Dashboard Académico">
+  <meta name="twitter:description" content="Optimiza tu rendimiento académico con nuestra calculadora de promedio ponderado y simulador de notas.">
+  <meta name="twitter:image" content="https://calculadorauniversitaria.pro/assets/twitter-card.jpg">
+
+  <!-- PWA & Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora Universitaria Pro",
+    "url": "https://calculadorauniversitaria.pro/",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Calculadora académica avanzada para promedios ponderados, simulación de notas y gestión de créditos universitarios."
+  }
+  </script>
+
+  <!-- Google Analytics 4 (Placeholder) -->
+  <!-- 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+
+  <!-- Google AdSense Tag (Placeholder) -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="light">
+
+  <!-- ADSENSE CONTAINER: Banner Superior -->
+  <aside class="ad-container ad-banner-top" aria-label="Publicidad">
+    <div class="ad-placeholder">Espacio para Anuncio Banner Superior (Leaderboard 728x90)</div>
+  </aside>
+
+  <div class="app-layout">
+    
+    <!-- BARRA LATERAL / NAVIGATION -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <span class="logo-icon">🎓</span>
+        <h1 class="logo-text">UniCalc <span>Pro</span></h1>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul>
+          <li><button class="nav-btn active" data-view="weighted"><span class="icon">⚖️</span> Promedio Ponderado</button></li>
+          <li><button class="nav-btn" data-view="simple"><span class="icon">🧮</span> Promedio Simple</button></li>
+          <li><button class="nav-btn" data-view="simulator"><span class="icon">🎯</span> Simulador de Nota</button></li>
+          <li><button class="nav-btn" data-view="credits"><span class="icon">💳</span> Créditos</button></li>
+          <li><button class="nav-btn" data-view="history"><span class="icon">📜</span> Historial</button></li>
+          <li><button class="nav-btn" data-view="settings"><span class="icon">⚙️</span> Configuración</button></li>
+        </ul>
+      </nav>
+
+      <!-- ADSENSE CONTAINER: Sidebar -->
+      <div class="ad-container ad-sidebar" aria-label="Publicidad">
+        <div class="ad-placeholder">Espacio Anuncio Sidebar (300x250)</div>
+      </div>
+
+      <div class="sidebar-footer">
+        <button id="themeToggleBtn" class="btn-secondary full-width">
+          <span id="themeIcon">🌙</span> <span id="themeText">Modo Oscuro</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+      <header class="topbar">
+        <button id="menuToggleBtn" class="btn-icon" aria-label="Abrir Menú">☰</button>
+        <div class="topbar-title">
+          <h2 id="currentViewTitle">Promedio Ponderado</h2>
+        </div>
+        <div class="topbar-actions">
+          <button id="exportPdfBtn" class="btn-outline" title="Exportar a PDF">📄 PDF</button>
+          <button id="exportCsvBtn" class="btn-outline" title="Exportar a CSV">📊 Excel/CSV</button>
+          <button id="printBtn" class="btn-outline" title="Imprimir">🖨️ Imprimir</button>
+        </div>
+      </header>
+
+      <div class="content-body">
+        
+        <!-- VISTA: PROMEDIO PONDERADO -->
+        <section id="weightedView" class="view-section active">
+          
+          <!-- DASHBOARD STATS CARDS -->
+          <div class="stats-grid">
+            <div class="stat-card" id="statAverageCard">
+              <span class="stat-label">Promedio Ponderado</span>
+              <span class="stat-value" id="statAverage">0.00</span>
+              <span class="stat-badge" id="statStatus">Sin datos</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Total de Créditos</span>
+              <span class="stat-value" id="statCredits">0</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Total Ponderado (Σ)</span>
+              <span class="stat-value" id="statTotalWeighted">0.00</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Cursos Registrados</span>
+              <span class="stat-value" id="statCourseCount">0</span>
+            </div>
+          </div>
+
+          <!-- CONTROLES Y BUSCADOR -->
+          <div class="actions-bar">
+            <div class="search-box">
+              <input type="text" id="searchInput" placeholder="Buscar curso...">
+            </div>
+            <div class="filter-box">
+              <select id="sortSelect">
+                <option value="default">Ordenar por: Orden de ingreso</option>
+                <option value="name-asc">Nombre (A-Z)</option>
+                <option value="grade-desc">Nota (Mayor a Menor)</option>
+                <option value="grade-asc">Nota (Menor a Mayor)</option>
+                <option value="credits-desc">Créditos (Mayor a Menor)</option>
+              </select>
+            </div>
+            <button id="addCourseBtn" class="btn-primary">+ Agregar Curso</button>
+          </div>
+
+          <!-- TABLA DE CURSOS -->
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Curso</th>
+                  <th>Nota (0-20)</th>
+                  <th>Créditos</th>
+                  <th>Ponderado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="coursesTableBody">
+                <!-- Se poblará dinámicamente -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- ADSENSE CONTAINER: Entre Resultados -->
+          <aside class="ad-container ad-in-feed" aria-label="Publicidad">
+            <div class="ad-placeholder">Espacio para Anuncio Entre Contenido (In-Feed)</div>
+          </aside>
+
+          <!-- SECCIÓN DE ESTADÍSTICAS Y GRÁFICOS -->
+          <div class="dashboard-grid">
+            <div class="dashboard-card">
+              <h3>Distribución de Rendimiento</h3>
+              <div class="canvas-container">
+                <canvas id="pieChartCanvas" width="280" height="280"></canvas>
+              </div>
+            </div>
+            <div class="dashboard-card">
+              <h3>Notas por Curso</h3>
+              <div class="canvas-container">
+                <canvas id="barChartCanvas" width="400" height="250"></canvas>
+              </div>
+            </div>
+            <div class="dashboard-card full-width-card">
+              <h3>Resumen de Destacados</h3>
+              <div class="highlights-grid">
+                <div class="highlight-item">
+                  <span class="hl-title">⭐ Curso con Mayor Nota</span>
+                  <span class="hl-value" id="hlMaxGrade">-</span>
+                </div>
+                <div class="highlight-item">
+                  <span class="hl-title">⚠️ Curso con Menor Nota</span>
+                  <span class="hl-value" id="hlMinGrade">-</span>
+                </div>
+                <div class="highlight-item">
+                  <span class="hl-title">🏋️ Curso con Más Créditos</span>
+                  <span class="hl-value" id="hlMaxCredits">-</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- VISTA: PROMEDIO SIMPLE -->
+        <section id="simpleView" class="view-section">
+          <div class="card-box">
+            <h3>Calculadora de Promedio Simple</h3>
+            <p>Calcula la media aritmética básica sin considerar créditos.</p>
+            <div class="simple-calc-container">
+              <div class="stat-card inline-stat">
+                <span class="stat-label">Promedio Simple Actual</span>
+                <span class="stat-value" id="simpleAverageVal">0.00</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISTA: SIMULADOR DE NOTA -->
+        <section id="simulatorView" class="view-section">
+          <div class="card-box">
+            <h3>Simulador de Nota Necesaria para Aprobar/Meta</h3>
+            <form id="simulatorForm" class="form-grid">
+              <div class="form-group">
+                <label for="simCurrentGrade">Promedio o Acumulado Actual (0-20):</label>
+                <input type="number" id="simCurrentGrade" step="0.1" min="0" max="20" required>
+              </div>
+              <div class="form-group">
+                <label for="simCurrentWeight">Peso Acumulado Actual (%):</label>
+                <input type="number" id="simCurrentWeight" step="1" min="1" max="99" placeholder="Ej. 60" required>
+              </div>
+              <div class="form-group">
+                <label for="simTargetGrade">Nota Final Deseada (Meta):</label>
+                <input type="number" id="simTargetGrade" step="0.1" min="0" max="20" value="10.5" required>
+              </div>
+              <button type="submit" class="btn-primary grid-span-full">Calcular Nota Necesaria</button>
+            </form>
+            <div id="simulatorResult" class="result-box hidden">
+              <h4>Resultado:</h4>
+              <p id="simResultText">-</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISTA: CALCULADORA DE CRÉDITOS -->
+        <section id="creditsView" class="view-section">
+          <div class="card-box">
+            <h3>Gestor y Calculadora de Créditos</h3>
+            <p>Monitorea el avance de tu plan de estudios.</p>
+            <div class="credits-progress-container">
+              <div class="form-group">
+                <label for="totalDegreeCredits">Créditos Totales de la Carrera:</label>
+                <input type="number" id="totalDegreeCredits" value="200">
+              </div>
+              <div class="progress-bar-wrapper">
+                <div class="progress-bar-fill" id="creditsProgressBar" style="width: 0%;"></div>
+              </div>
+              <p id="creditsProgressText">0 / 200 Créditos Completados (0%)</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISTA: HISTORIAL -->
+        <section id="historyView" class="view-section">
+          <div class="card-box">
+            <h3>Historial de Ciclos Academicos</h3>
+            <button id="saveSemesterBtn" class="btn-secondary">💾 Guardar Ciclo Actual en Historial</button>
+            <ul id="historyList" class="history-list">
+              <!-- Se puebla dinámicamente -->
+            </ul>
+          </div>
+        </section>
+
+        <!-- VISTA: CONFIGURACIÓN -->
+        <section id="settingsView" class="view-section">
+          <div class="card-box">
+            <h3>Configuración del Sistema</h3>
+            <div class="settings-options">
+              <div class="setting-item">
+                <label for="minPassingGrade">Nota Mínima Aprobatoria:</label>
+                <input type="number" id="minPassingGrade" value="10.5" step="0.5" min="0" max="20">
+              </div>
+              <div class="setting-item">
+                <button id="clearAllDataBtn" class="btn-danger">🗑️ Borrar Todos los Datos de LocalStorage</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- ADSENSE CONTAINER: Banner Inferior -->
+      <aside class="ad-container ad-banner-bottom" aria-label="Publicidad">
+        <div class="ad-placeholder">Espacio para Anuncio Banner Inferior (Responsive)</div>
+      </aside>
+
+    </main>
+  </div>
+
+  <!-- MODAL PARA AGREGAR / EDITAR CURSO -->
+  <div class="modal" id="courseModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Agregar Nuevo Curso</h3>
+        <button class="close-modal" id="closeModalBtn">&times;</button>
+      </div>
+      <form id="courseForm">
+        <input type="hidden" id="courseId">
+        <div class="form-group">
+          <label for="courseName">Nombre del Curso</label>
+          <input type="text" id="courseName" placeholder="Ej. Matemática III" required>
+        </div>
+        <div class="form-group">
+          <label for="courseGrade">Nota Final (0 - 20)</label>
+          <input type="number" id="courseGrade" step="0.01" min="0" max="20" placeholder="Ej. 15.5" required>
+        </div>
+        <div class="form-group">
+          <label for="courseCredits">Créditos</label>
+          <input type="number" id="courseCredits" step="1" min="1" max="20" placeholder="Ej. 4" required>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="cancelModalBtn">Cancelar</button>
+          <button type="submit" class="btn-primary">Guardar Curso</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
